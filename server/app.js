@@ -1,19 +1,13 @@
-const router = require('./controllers')
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const path = require('path')
+const express = require("express");
+const path = require("path");
 
-const app = express()
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use('/api', router)
+const app = express();
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
-if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
-  })
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+  });
 }
 
-module.exports = app
+module.exports = app;

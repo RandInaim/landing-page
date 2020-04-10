@@ -12,14 +12,13 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "client:init": "cd ./client && npm i",
-    "client:dev": "cd ./client && npm start",
-    "client:build": "cd ./client && npm run build",
-    "heroku-postbuild": "npm run client:init && npm run client:build"
+    "start": "node ./server/index.js",
+    "build:client": "cd client && npm run build",
+    "dev": "nodemon ./server/index.js",
+    "dev:all": "npm run build:client && npm run dev",
+    "lint": "./node_modules/.bin/eslint ./server",
+    "lint:fix": "./node_modules/.bin/eslint ./server --fix",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,9 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "npm": "6.13.7",
-    "node": "12.14.1"
   }
 }
